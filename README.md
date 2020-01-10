@@ -7,9 +7,9 @@ cd <your-package>
 npm start
 ```
 
-Now that we give the first step just open http://localhost:3000 to see your app 🎉
+Now that we give the first step just open http://localhost:3000 to see your app.
 
-It's time to install other dependency. `@babel/cli` which can be used to compile files from the command line and `@babel/preset-react` to transpiler ES6 to ES5.
+It's time to install other dependency. `@babel/cli` which can be used to compile files from the command line and `@babel/preset-react` to transpile ES6 to ES5.
 
 ```sh
 npm install --save-dev @babel/cli @babel/preset-react
@@ -17,7 +17,7 @@ npm install --save-dev @babel/cli @babel/preset-react
 
 ## Edit `package.json`
 
-Before publishing our package we have some things to to edit on `package.json`.
+Before publishing our package we have some things to edit on `package.json`.
 
 Rename your project
 
@@ -62,7 +62,7 @@ You can see the full `package.json` file [here](https://github.com/henriquemaced
 
 ## Create components
 
-After the project setup and before we published the package we need build some beautiful compenents. So, here we go! 💅
+After the project setup and before we published the package we need to build some beautiful components. So, here we go!
 
 Create a `components` directory inside the `src` folder and create our first `awesome-component.js`
 
@@ -86,7 +86,7 @@ npm run package
 npm publish
 ```
 
-And your package is live on your Github page at `https://github.com/<username>?tab=packages` 🔥
+And your package is live on your Github page at `https://github.com/<username>?tab=packages`
 
 ## Import components
 
@@ -105,6 +105,22 @@ import AwesomeComponent from "@<username>/<your-package>/dist/awesome-component"
 <AwesomeComponent>
   Today's your lucky day!
 </AwesomeComponent>
+```
+
+## Test package locally
+
+One important thing is that we can test our package without publishing and for that, we've `pack` command. On root of the directory that contains the `package.json` file and after we run the `npm run package` to compile our package, just run
+
+```sh
+npm pack
+```
+
+This will create a gzip with the version specified in the `package.json`. Something like `<username>-<your-package>-0.1.0.tgz`
+
+After that, you just need to run the `npm install` command on your other project to test it locally.
+
+```sh
+npm install --save ../path/to/your-package.tgz
 ```
 
 ## Other available scripts
