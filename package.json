@@ -1,7 +1,7 @@
 {
-  "name": "dummy-package",
+  "name": "@henriquemacedo/dummy-package",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "babel": {
     "presets": [
       "@babel/preset-react"
@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
     "package": "rm -rf dist && mkdir dist &&  babel ./src/components -d dist --copy-files"
   },
   "eslintConfig": {
@@ -40,5 +40,8 @@
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/preset-react": "^7.7.4"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
