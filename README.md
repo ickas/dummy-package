@@ -1,68 +1,109 @@
+## Bootstrap setup
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+```sh
+npx create-react-app <your-package>
+cd <your-package>
+npm start
+```
 
-In the project directory, you can run:
+Now that we give the first step just open http://localhost:3000 to see your app 🎉
 
-### `npm start`
+It's time to install other dependency. `@babel/cli` which can be used to compile files from the command line and `@babel/preset-react` to transpiler ES6 to ES5.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm install --save-dev @babel/cli @babel/preset-react
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Edit `package.json`
 
-### `npm test`
+Before publishing our package we have some things to to edit on `package.json`.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Rename your project
 
-### `npm run build`
+```json
+"name": "@<username>/<your-package>"
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Set private to _false_
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```json
+"private": false
+```
+
+Add the following script to the scripts section to convert all the components to ES5 and create a `dist` folder with them.
+
+```json
+"package": "rm -rf dist && mkdir dist &&  babel ./src/components -d dist --copy-files"
+```
+
+**Note**:
+You can rename the `"package"` command.
+
+Add `babel`
+
+```json
+"babel": {
+  "presets": [
+    "@babel/preset-react"
+  ]
+}
+```
+
+Finally, for we publish the package on GitHub just add
+
+```json
+"publishConfig": {
+  "registry": "https://npm.pkg.github.com/"
+}
+```
+
+You can see the full `package.json` file [here](https://github.com/henriquemacedo/dummy-package/blob/master/README.md).
+
+## Create components
+
+After the project setup and before we published the package we need build some beautiful compenents. So, here we go! 💅
+
+Create a `components` directory inside the `src` folder and create our first `awesome-component.js`
+
+```javascript
+import React from "react";
+
+const AwesomeComponent = props => {
+  const { children } = props;
+  return <div>{children}</div>;
+};
+
+export default AwesomeComponent;
+```
+
+## Publish
+
+And last but not least, we just need to compile our package and publish.
+
+```sh
+npm run package
+npm publish
+```
+
+And your package is live on your Github page at `https://github.com/<username>?tab=packages` 🔥
+
+## Other available scripts
+
+```sh
+npm test
+```
+
+The page will reload if you make edits. You will also see any lint errors in the console.
+
+```sh
+npm run build
+```
+
+Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes. Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
