@@ -123,6 +123,53 @@ After that, you just need to run the `npm install` command on your other project
 npm install --save ../path/to/your-package.tgz
 ```
 
+## Extra steps
+### Add style-components
+
+We have a couple of ways to style our components, one of them is [styled-components](https://www.styled-components.com/). So, if you want to create a beautiful reusable components that you can use throughout your projects you can add styled-component to your package.
+
+```sh
+npm install --save styled-components
+```
+
+> styled-components utilises tagged template literals to style your components. It removes the mapping between components and styles. This means that when you're defining your styles, you're actually creating a normal React component, that has your styles attached to it.
+
+With styled-components, we can transform our old `AwesomeComponent` to a new, shiny and beautiful card.
+
+```javascript
+import React from "react";
+import styled from "styled-components";
+
+const Card = styled.div`
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    margin: 20px 0 0;
+  }
+`;
+
+const AwesomeComponent = props => {
+  const { title, description } = props;
+  return (
+    <Card>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </Card>
+  );
+};
+
+export default AwesomeComponent;
+```
+
 ## Other available scripts
 
 ```sh
