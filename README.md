@@ -88,6 +88,25 @@ npm publish
 
 And your package is live on your Github page at `https://github.com/<username>?tab=packages` 🔥
 
+## Import components
+
+Now that we have our awesome package published, we can import our components on other project.
+
+1. Install your package
+```sh
+npm install --save @<username>/<your-package>
+```
+
+2. Import components
+
+```javascript
+import AwesomeComponent from "@<username>/<your-package>/dist/awesome-component";
+
+<AwesomeComponent>
+  Today's your lucky day!
+</AwesomeComponent>
+```
+
 ## Other available scripts
 
 ```sh
