@@ -1,3 +1,11 @@
+## Authenticating to GitHub Packages
+
+First things first.
+
+> You need an access token to publish, install, and delete packages in GitHub Packages. You can use a personal access token to authenticate with your username directly to GitHub Packages or the GitHub API. You can use a GITHUB_TOKEN to authenticate using a GitHub Actions workflow.
+
+So, you need to create a [new personal access token](https://github.com/settings/tokens/new) with packages permissions to upload, download and delete packages on GitHub package registry.
+
 ## Bootstrap setup
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -7,7 +15,7 @@ cd <your-package>
 npm start
 ```
 
-Now that we give the first step just open http://localhost:3000 to see your app.
+Now that we fire up our project just open http://localhost:3000 to see your app.
 
 It's time to install other dependency. `@babel/cli` which can be used to compile files from the command line and `@babel/preset-react` to transpile ES6 to ES5.
 
